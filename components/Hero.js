@@ -8,7 +8,7 @@ export default function Hero() {
     <div className="relative container flex flex-row justify-center items-start overflow-hidden mx-auto max-w-6xl">
       <div
         className="md:w-1/2 sm:w-full sm:mx-auto md:text-left mt-20 px-4"
-        style={{ "margin-left": "0px" }}
+        style={{ marginLeft: "0px" }}
       >
         {/* Text container */}
 
@@ -23,19 +23,11 @@ export default function Hero() {
         <div
           className="md:text-left md:text-3xl m-5 
           text-2xl text-center mx-auto"
-          style={{ "margin-left": "0px" }}
+          style={{ marginLeft: "0px" }}
         >
-          <p
-          // className="md:text-left lg:text-3xl text-3xl m-5 sm:text-xl sm:text-center"
-          // style={{ "margin-left": "0px" }}
-          >
-            I am a Developer and Blogger.
-          </p>
+          <p>I am a Developer and Blogger.</p>
 
-          <p
-          // className="md:text-left lg:text-3xl text-3xl m-5 sm:text-xl sm:text-center"
-          // style={{ "margin-left": "0px" }}
-          >
+          <p>
             On this site, you can find my
             <span className="hover:bg-red-500 rounded-md px-1 py-1  hover:text-gray-50">
               <Link href="/writing"> Writings,</Link>{" "}
