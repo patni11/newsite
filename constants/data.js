@@ -60,13 +60,13 @@ const userData = {
     },
     {
       title: "Star Crash",
-      link: "https://github.com/patni11/Arduino_LED",
-      imgUrl: "projects/arduino.png",
+      link: "https://github.com/patni11/StarCrash",
+      imgUrl: "projects/starcrash.png",
     },
     {
       title: "Old Website",
-      link: "https://www.shubhpatni.com",
-      imgUrl: "projects/arduino.png",
+      link: "https://github.com/patni11/mysite",
+      imgUrl: "projects/personalWebsite-old.png",
     },
   ],
   about: {
