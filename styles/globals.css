@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "fonts.css";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Inter var", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+a {
+  color: "inherit";
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#Crypto {
+  background-color: "#FF8303";
+}
+#Tech {
+  background-color: "#3D84B8";
+}
+#Programming {
+  background-color: "#01937C";
+}
+#Productivity {
+  background-color: "#a8026f";
+}
