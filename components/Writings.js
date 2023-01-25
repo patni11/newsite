@@ -26,12 +26,12 @@ export default function Writings() {
               <li
                 key={idx}
                 className={`rounded-full text-gray-50 font-bold text-xs p-2
-                 lg:text-2xl md:text-xl md:p-3 md:px-6 
+                md:text-xl md:p-3 md:px-6 
                  sm:text-l sm:p-3 sm:px-6
                  ${filter === tag ? "bg-red-500" : "bg-red-300"}`}
               >
                 <button
-                  style={{ "font-weight": "bold" }}
+                  style={{ fontWeight: "bold" }}
                   onClick={() => {
                     setFilter(tag);
                     let filteredArticles = articles.sort(
