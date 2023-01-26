@@ -14,9 +14,21 @@ const userData = {
       imgUrl: "projects/neugym.png",
     },
     {
-      title: "NEU Blockchain",
-      link: "https://northeasternblockchain.xyz",
-      imgUrl: "projects/neuBlockchain.png",
+      title: "Face ID For Mac",
+      link: "https://github.com/patni11/face-id-for-mac",
+      imgUrl: "projects/faceID.png",
+    },
+
+    {
+      title: "Photoshop Lite",
+      link: "https://github.com/patni11/ImgProcessing",
+      imgUrl: "projects/imageProcessing.png",
+    },
+
+    {
+      title: "Marble Solitaire CLI",
+      link: "https://github.com/patni11/ood",
+      imgUrl: "projects/MarbleSolitaire.png",
     },
     {
       title: "Actions",
@@ -24,9 +36,9 @@ const userData = {
       imgUrl: "projects/actions.png",
     },
     {
-      title: "Face ID For Mac",
-      link: "https://github.com/patni11/face-id-for-mac",
-      imgUrl: "projects/faceID.png",
+      title: "NEU Blockchain",
+      link: "https://northeasternblockchain.xyz",
+      imgUrl: "projects/neuBlockchain.png",
     },
     {
       title: "Verifund",
