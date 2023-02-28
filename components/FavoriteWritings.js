@@ -37,7 +37,7 @@ export default function FavoriteWritings() {
         <div className="grid md:grid-cols-3 gap-8 lg:-mt-8 pb-40">
           {/* Single card */}
           <a
-            href="https://github.com/patni11/face-id-for-mac"
+            href="https://static.phemex.com/s/home/student-foundation/Shubh.pdf"
             className="w-full block col-span-3 shadow-2xl"
             title="Avalanche: A Novel Solution To The Blockchain Trilema"
           >
@@ -58,7 +58,7 @@ export default function FavoriteWritings() {
 
           {/* Single card */}
           <a
-            href="https://neugym.com"
+            href="https://phemex.com/blogs/music-nft-song-a-day"
             className="w-full block col-span-3  sm:col-span-2 shadow-2xl"
             title="The Most Undervalued Music NFT: Song A Day"
           >
