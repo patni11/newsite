@@ -49,8 +49,8 @@ const ProjectPopup = ({
               className="w-[100%] aspect-video"
               src={videoLink}
               title="Video"
-              frameborder="0"
-              allowfullscreen
+              frameBorder="0"
+              allowFullScreen
             ></iframe>
           ) : (
             <div className="flex justify-center h-full">

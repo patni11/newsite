@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import userData from "@constants/data";
+import ProjectPopup from "./ProjectPopup";
 
 export default function FavouriteProjects() {
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const FavProjects = ["Face ID For Mac", "NEU Gym Trends", "Photoshop Lite"];
+
+  const projectData = userData.projects.filter((proj) => {
+    return FavProjects.includes(proj.title);
+  });
+
+  const [currentProj, setCurrentProj] = useState(0);
+  console.log("Rendered");
+
   return (
     <div className="bg-[#F1F1F1] -mt-40 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto">
@@ -34,12 +46,14 @@ export default function FavouriteProjects() {
         {/* Grid starts here */}
         <div className="grid md:grid-cols-3 gap-8 lg:-mt-8 pb-40">
           {/* Single card */}
-          <a
-            href="https://github.com/patni11/face-id-for-mac"
-            className="w-full block col-span-3 shadow-2xl"
-            title="Face ID For Mac"
-          >
-            <div className="relative overflow-hidden">
+          <div className="w-full block col-span-3 shadow-2xl ">
+            <div
+              className="relative overflow-hidden cursor-pointer"
+              onClick={() => {
+                setCurrentProj(1);
+                setPopupOpen(true);
+              }}
+            >
               <img
                 src="projects/faceID2.png"
                 alt="Face ID For Mac"
@@ -52,15 +66,17 @@ export default function FavouriteProjects() {
                 01
               </h1>
             </div>
-          </a>
+          </div>
 
           {/* Single card */}
-          <a
-            href="https://neugym.com"
-            className="w-full block col-span-3  sm:col-span-2 shadow-2xl"
-            title="NEU Gym Trends"
-          >
-            <div className="relative overflow-hidden">
+          <div className="w-full block col-span-3 shadow-2xl sm:col-span-2">
+            <div
+              className="relative overflow-hidden cursor-pointer"
+              onClick={() => {
+                setCurrentProj(0);
+                setPopupOpen(true);
+              }}
+            >
               {/* <div className="overlay absolute inset-0 bg-black bg-opacity-70 z-10"></div> */}
               <img
                 src="projects/neugym.png"
@@ -74,15 +90,17 @@ export default function FavouriteProjects() {
                 02
               </h1>
             </div>
-          </a>
+          </div>
 
           {/* Single card */}
-          <a
-            href="https://github.com/patni11/ImgProcessing"
-            className="w-full block col-span-3 sm:col-span-1  object-cover"
-            title="Photoshop Lite"
-          >
-            <div className="relative overflow-hidden shadow-2xl">
+          <div className="w-full block col-span-3 sm:col-span-1 object-cover">
+            <div
+              className="relative overflow-hidden shadow-2xl cursor-pointer"
+              onClick={() => {
+                setCurrentProj(2);
+                setPopupOpen(true);
+              }}
+            >
               {/* <div className="overlay absolute inset-0 bg-black bg-opacity-70 z-10"></div> */}
               <img
                 src="projects/imageProcessing.png"
@@ -96,9 +114,17 @@ export default function FavouriteProjects() {
                 03
               </h1>
             </div>
-          </a>
+          </div>
         </div>
       </div>
+      <ProjectPopup
+        isOpen={isPopupOpen}
+        onClose={() => setPopupOpen(false)}
+        title={projectData[currentProj].title}
+        description={projectData[currentProj].description}
+        link={projectData[currentProj].link}
+        videoLink={projectData[currentProj].videoLink}
+      ></ProjectPopup>
     </div>
   );
 }
