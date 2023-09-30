@@ -1,5 +1,4 @@
 import React from "react";
-import userData from "@constants/data";
 import { articles, tags } from "@constants/articles";
 import { useState } from "react";
 
@@ -28,7 +27,8 @@ export default function Writings() {
                 className={`rounded-full text-gray-50 font-bold text-xs p-2
                 md:text-xl md:p-3 md:px-6 
                  sm:text-l sm:p-3 sm:px-6
-                 ${filter === tag ? "bg-red-500" : "bg-red-300"}`}
+                 hover:bg-red-600
+                 ${filter === tag ? "bg-red-600" : "bg-red-400"}`}
               >
                 <button
                   style={{ fontWeight: "bold" }}

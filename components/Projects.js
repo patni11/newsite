@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import userData from "@constants/data";
+import ProjectPopup from "./ProjectPopup";
 
 export default function Projects() {
   return (
@@ -18,7 +19,9 @@ export default function Projects() {
               link={proj.link}
               imgUrl={proj.imgUrl}
               number={`${idx + 1}`}
+              description={proj.description}
               key={proj.title}
+              videoLink={proj.videoLink}
             />
           ))}
         </div>
@@ -27,9 +30,21 @@ export default function Projects() {
   );
 }
 
-const ProjectCard = ({ title, link, imgUrl, number }) => {
+const ProjectCard = ({
+  title,
+  link,
+  imgUrl,
+  number,
+  description,
+  videoLink,
+}) => {
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
   return (
-    <a href={link} className="w-full block shadow-2xl" target="_blank">
+    <div
+      onClick={() => setPopupOpen(true)}
+      className="w-full block shadow-2xl cursor-pointer"
+    >
       <div className="relative overflow-hidden">
         <div className="h-72 object-cover">
           <img
@@ -45,6 +60,15 @@ const ProjectCard = ({ title, link, imgUrl, number }) => {
           {number.length === 1 ? "0" + number : number}
         </h1>
       </div>
-    </a>
+
+      <ProjectPopup
+        isOpen={isPopupOpen}
+        onClose={() => setPopupOpen(false)}
+        title={title}
+        description={description}
+        link={link}
+        videoLink={videoLink}
+      ></ProjectPopup>
+    </div>
   );
 };

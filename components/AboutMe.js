@@ -23,20 +23,37 @@ export default function AboutMe() {
         <div className="pt-20 grid grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto gap-y-20 gap-x-20">
           {/* Social Buttons */}
           <div className="inline-flex flex-col">
-            <div className="mt-8">
+            <div className="mt-8 flex flex-col space-y-4">
               <a
-                href={userData.resumeUrl}
-                target="__blank"
+                href={userData.softwareDevResume}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-800 border-b-2 border-gray-800 dark:border-gray-300 font-bold dark:text-gray-300"
               >
-                One Page Resume
+                Software Developer Resume
+              </a>{" "}
+              <a
+                href={userData.fullstackDevResume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-800 border-b-2 border-gray-800 dark:border-gray-300 font-bold dark:text-gray-300"
+              >
+                Full Stack Developer Resume
+              </a>{" "}
+              <a
+                href={userData.web3DevResume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-800 border-b-2 border-gray-800 dark:border-gray-300 font-bold dark:text-gray-300"
+              >
+                Web3 Developer Resume
               </a>{" "}
               <a
                 href={"mailto:" + userData.email}
                 target="__blank"
                 className="text-gray-800 border-b-2 border-gray-800 dark:border-gray-300 font-bold dark:text-gray-300"
               >
-                <h1 className="text-xl font-semibold text-gray-700 dark:text-gray-200">
+                <h1 className="text-xl font-semibold text-gray-700 dark:text-gray-200 mt-4">
                   Hire Me
                 </h1>
               </a>{" "}

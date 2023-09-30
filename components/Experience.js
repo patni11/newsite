@@ -48,7 +48,12 @@ const ExperienceCard = ({ title, desc, year, company, companyLink }) => {
       <a href={companyLink} className="text-gray-500">
         {company}
       </a>
-      <p className="text-gray-600 dark:text-gray-400 my-2">{desc}</p>
+      <p
+        className="text-gray-600 dark:text-gray-400 my-2"
+        dangerouslySetInnerHTML={{
+          __html: desc.replace(/\n/g, "<br />"),
+        }}
+      />
     </div>
   );
 };
