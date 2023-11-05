@@ -5,7 +5,7 @@ import ProjectPopup from "./ProjectPopup";
 
 export default function FavouriteProjects() {
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const FavProjects = ["Face ID For Mac", "NEU Gym Trends", "Photoshop Lite"];
+  const FavProjects = ["ResMe", "Face ID For Mac", "NEU Gym Trends"];
 
   const projectData = userData.projects.filter((proj) => {
     return FavProjects.includes(proj.title);
@@ -50,10 +50,34 @@ export default function FavouriteProjects() {
             <div
               className="relative overflow-hidden cursor-pointer"
               onClick={() => {
+                setCurrentProj(0);
+                setPopupOpen(true);
+              }}
+            >
+              <img
+                src="projects/resme.png"
+                alt="ResMe"
+                className="transform hover:scale-125 transition duration-2000 ease-out"
+              />
+              <h1 className="absolute top-10 left-10 text-gray-50 font-bold text-xl bg-red-500 rounded-md px-2">
+                ResMe
+              </h1>
+              <h1 className="absolute bottom-10 left-10 text-gray-50 font-bold text-xl">
+                01
+              </h1>
+            </div>
+          </div>
+
+          {/* Single card */}
+          <div className="w-full block col-span-3 shadow-2xl sm:col-span-2">
+            <div
+              className="relative overflow-hidden cursor-pointer"
+              onClick={() => {
                 setCurrentProj(1);
                 setPopupOpen(true);
               }}
             >
+              {/* <div className="overlay absolute inset-0 bg-black bg-opacity-70 z-10"></div> */}
               <img
                 src="projects/faceID2.png"
                 alt="Face ID For Mac"
@@ -69,30 +93,6 @@ export default function FavouriteProjects() {
           </div>
 
           {/* Single card */}
-          <div className="w-full block col-span-3 shadow-2xl sm:col-span-2">
-            <div
-              className="relative overflow-hidden cursor-pointer"
-              onClick={() => {
-                setCurrentProj(0);
-                setPopupOpen(true);
-              }}
-            >
-              {/* <div className="overlay absolute inset-0 bg-black bg-opacity-70 z-10"></div> */}
-              <img
-                src="projects/neugym.png"
-                alt="NEU Gym Trends"
-                className="transform hover:scale-125 transition duration-2000 ease-out"
-              />
-              <h1 className="absolute top-10 left-10 text-gray-50 font-bold text-xl bg-red-500 rounded-md px-2">
-                NEU Gym Trends
-              </h1>
-              <h1 className="absolute bottom-10 left-10 text-gray-50 font-bold text-xl">
-                02
-              </h1>
-            </div>
-          </div>
-
-          {/* Single card */}
           <div className="w-full block col-span-3 sm:col-span-1 object-cover">
             <div
               className="relative overflow-hidden shadow-2xl cursor-pointer"
@@ -103,12 +103,12 @@ export default function FavouriteProjects() {
             >
               {/* <div className="overlay absolute inset-0 bg-black bg-opacity-70 z-10"></div> */}
               <img
-                src="projects/imageProcessing.png"
-                alt="Photoshop Lite Project"
+                src="projects/neugym.png"
+                alt="NEU Gym Trends"
                 className="transform hover:scale-125 transition duration-2000 ease-out object-cover shadow-2xl"
               />
               <h1 className="absolute top-10 left-10 text-gray-50 font-bold text-xl bg-red-500 rounded-md px-2">
-                Photoshop Lite
+                NEU Gym Trends
               </h1>
               <h1 className="absolute bottom-10 left-10 text-gray-50 font-bold text-xl">
                 03
