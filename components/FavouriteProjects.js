@@ -12,7 +12,6 @@ export default function FavouriteProjects() {
   });
 
   const [currentProj, setCurrentProj] = useState(0);
-  console.log("Rendered");
 
   return (
     <div className="bg-[#F1F1F1] -mt-40 dark:bg-gray-900">
@@ -73,7 +72,7 @@ export default function FavouriteProjects() {
             <div
               className="relative overflow-hidden cursor-pointer"
               onClick={() => {
-                setCurrentProj(1);
+                setCurrentProj(2);
                 setPopupOpen(true);
               }}
             >
@@ -97,7 +96,7 @@ export default function FavouriteProjects() {
             <div
               className="relative overflow-hidden shadow-2xl cursor-pointer"
               onClick={() => {
-                setCurrentProj(2);
+                setCurrentProj(1);
                 setPopupOpen(true);
               }}
             >
