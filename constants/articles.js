@@ -799,4 +799,17 @@ export const articles = [
       tags: "Crypto",
     },
   },
+  {
+    model: "main.articles",
+    pk: 617,
+    fields: {
+      title: "Why Bittensor Will Win The Decentralised AI Race",
+      date_created: "2024-05-7",
+      medium_link:
+        "https://hfaresearch.substack.com/p/why-bittensor-will-win-the-decentralised",
+      image:
+        "article_images/why-bittensor-will-win-the-decentralised-ai-race.png",
+      tags: "Crypto",
+    },
+  },
 ];

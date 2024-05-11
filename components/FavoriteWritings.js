@@ -34,18 +34,18 @@ export default function FavoriteWritings() {
         <div className="grid md:grid-cols-3 gap-8 lg:-mt-8 pb-40">
           {/* Single card */}
           <a
-            href="https://static.phemex.com/s/home/student-foundation/Shubh.pdf"
+            href="https://hfaresearch.substack.com/p/why-bittensor-will-win-the-decentralised" //https://hfaresearch.substack.com/p/why-bittensor-will-win-the-decentralised
             className="w-full block col-span-3 shadow-2xl"
-            title="Avalanche: A Novel Solution To The Blockchain Trilema"
+            title="Why Bittensor Will Win The Decentralised AI Race" //Why Bittensor Will Win The Decentralised AI Race
           >
             <div className="relative overflow-hidden">
               <img
-                src="article_images/A-DETAILED-GUIDE-ON-AVALANCHE-NETWORK.png"
-                alt="Avalanche: A Novel Solution To The Blockchain Trilema"
+                src="article_images/why-bittensor-will-win-the-decentralised-ai-race.png" //
+                alt="Why Bittensor Will Win The Decentralised AI Race" //Why Bittensor Will Win The Decentralised AI Race
                 className="transform hover:scale-125 transition duration-2000 ease-out"
               />
               <h1 className="absolute top-10 left-10 text-gray-50 font-bold text-xl bg-red-500 rounded-md px-2">
-                Avalanche: A Novel Solution To The Blockchain Trilema
+                Why Bittensor Will Win The Decentralised AI Race
               </h1>
               <h1 className="absolute bottom-10 left-10 text-gray-50 font-bold text-xl">
                 01
@@ -55,19 +55,19 @@ export default function FavoriteWritings() {
 
           {/* Single card */}
           <a
-            href="https://phemex.com/blogs/music-nft-song-a-day"
+            href="https://static.phemex.com/s/home/student-foundation/Shubh.pdf"
             className="w-full block col-span-3  sm:col-span-2 shadow-2xl"
-            title="The Most Undervalued Music NFT: Song A Day"
+            title="Avalanche: A Novel Solution To The Blockchain Trilema"
           >
             <div className="relative overflow-hidden">
               {/* <div className="overlay absolute inset-0 bg-black bg-opacity-70 z-10"></div> */}
               <img
-                src="article_images/most-undervalued-music-NFT-blog-_-Song-A-Day-.jpg"
-                alt="The Most Undervalued Music NFT: Song A Day"
+                src="article_images/A-DETAILED-GUIDE-ON-AVALANCHE-NETWORK.png"
+                alt="Avalanche: A Novel Solution To The Blockchain Trilema"
                 className="transform hover:scale-125 transition duration-2000 ease-out"
               />
               <h1 className="absolute top-10 left-10 text-gray-50 font-bold text-xl bg-red-500 rounded-md px-2">
-                The Most Undervalued Music NFT: Song A Day
+                Avalanche: A Novel Solution To The Blockchain Trilema
               </h1>
               <h1 className="absolute bottom-10 left-10 text-gray-50 font-bold text-xl">
                 02
