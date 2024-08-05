@@ -235,6 +235,17 @@ Experience the future of Mac with Face ID. try the app today and unlock your Mac
   },
   experience: [
     {
+      title: "Full Stack Software Engineer (Co-Op)",
+      company: "Hometap",
+      year: "2024",
+      companyLink: "https://www.hometap.com/",
+      desc: `
+      Working as a full stack developer in the team that developer internal tools for investment managers.
+
+      The tech stack includes React and Django
+      `,
+    },
+    {
       title: "Incubator",
       company: "Lightspeed/Polychain Capital",
       year: "2023",
