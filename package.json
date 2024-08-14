@@ -5,13 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prestart": "node scripts/generateImageList.js",
+    "prebuild": "node scripts/generateImageList.js"
   },
   "dependencies": {
     "next": "12.3.1",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-zoom-pan-pinch": "^3.6.1",
     "tailwindcss": "^3.2.0"
   },
   "devDependencies": {
