@@ -1,78 +1,97 @@
 [
   {
     "src": "/projects/AIEdu.png",
-    "alt": "AIEdu"
+    "alt": "AIEdu",
+    "description": "This is the description"
   },
   {
     "src": "/projects/MarbleSolitaire.png",
-    "alt": "MarbleSolitaire"
+    "alt": "MarbleSolitaire",
+    "description": "This is the description"
   },
   {
     "src": "/projects/actions.png",
-    "alt": "actions"
+    "alt": "actions",
+    "description": "This is the description"
   },
   {
     "src": "/projects/ambulance.png",
-    "alt": "ambulance"
+    "alt": "ambulance",
+    "description": "This is the description"
   },
   {
     "src": "/projects/arduino.png",
-    "alt": "arduino"
+    "alt": "arduino",
+    "description": "This is the description"
   },
   {
     "src": "/projects/ens.png",
-    "alt": "ens"
+    "alt": "ens",
+    "description": "This is the description"
   },
   {
     "src": "/projects/faceID.png",
-    "alt": "faceID"
+    "alt": "faceID",
+    "description": "This is the description"
   },
   {
     "src": "/projects/faceID2.png",
-    "alt": "faceID2"
+    "alt": "faceID2",
+    "description": "This is the description"
   },
   {
     "src": "/projects/imageProcessing.png",
-    "alt": "imageProcessing"
+    "alt": "imageProcessing",
+    "description": "This is the description"
   },
   {
     "src": "/projects/nand2tetris.jpg",
-    "alt": "nand2tetris"
+    "alt": "nand2tetris",
+    "description": "This is the description"
   },
   {
     "src": "/projects/neuBlockchain.png",
-    "alt": "neuBlockchain"
+    "alt": "neuBlockchain",
+    "description": "This is the description"
   },
   {
     "src": "/projects/neugym.png",
-    "alt": "neugym"
+    "alt": "neugym",
+    "description": "This is the description"
   },
   {
     "src": "/projects/norswap.png",
-    "alt": "norswap"
+    "alt": "norswap",
+    "description": "This is the description"
   },
   {
     "src": "/projects/pendulum.png",
-    "alt": "pendulum"
+    "alt": "pendulum",
+    "description": "This is the description"
   },
   {
     "src": "/projects/personalWebsite-old.png",
-    "alt": "personalWebsite-old"
+    "alt": "personalWebsite-old",
+    "description": "This is the description"
   },
   {
     "src": "/projects/resme.png",
-    "alt": "resme"
+    "alt": "resme",
+    "description": "This is the description"
   },
   {
     "src": "/projects/starcrash.png",
-    "alt": "starcrash"
+    "alt": "starcrash",
+    "description": "This is the description"
   },
   {
     "src": "/projects/verifund.png",
-    "alt": "verifund"
+    "alt": "verifund",
+    "description": "This is the description"
   },
   {
     "src": "/projects/yt.png",
-    "alt": "yt"
+    "alt": "yt",
+    "description": "This is the description"
   }
 ]

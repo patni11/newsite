@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import Nav from "./Nav";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+//import styles from "./Life.module.css";
 
 const getRandomRotation = () => {
-  const r = Math.floor(Math.random() * 6);
+  const r = Math.floor(Math.random() * 4);
   return r * (r % 2 == 0 ? 1 : -1);
 };
-
-function index_scale(idx) {
-  if (idx >= 0 && idx <= 8) {
-    return 1;
-  } else if (idx >= 9 && idx <= 15) {
-    return 2;
-  } else if (idx >= 16 && idx <= 23) {
-    return 3;
-  } else if (idx >= 24 && idx <= 32) {
-    return 4;
-  } else {
-    return 5;
-  }
-}
 
 function index_images(idx) {
   if (idx >= 0 && idx <= 8) {
@@ -39,10 +26,11 @@ function index_images(idx) {
 export default function LifeMain() {
   const [images, setImages] = useState([]);
   const [center, setCenter] = useState({ x: 0, y: 0 });
+  const [screenWidth, setScreenWidth] = useState(0);
 
   //get images
   useEffect(() => {
-    fetch("/projects/images.json")
+    fetch("/article_images/images.json")
       .then((response) => response.json())
       .then((data) => setImages(data))
       .catch((error) => console.error("Error loading images:", error));
@@ -54,6 +42,7 @@ export default function LifeMain() {
       const x = window.innerWidth / 2;
       const y = window.innerHeight / 2;
       setCenter({ x, y });
+      setScreenWidth(window.innerWidth);
     };
 
     // Initial call to set center
@@ -68,6 +57,15 @@ export default function LifeMain() {
     };
   }, []);
 
+  // Calculate image size based on screen width and number of images
+  const max_size = useMemo(() => {
+    if (screenWidth === 0 || images.length === 0) return 0;
+
+    // Clamp size between minSize and maxSize
+    const size = (0.8 * screenWidth) / Math.pow(images.length, 0.65);
+    return size;
+  }, [screenWidth, images.length]);
+
   function get_sign(col, mid_point) {
     if (col == mid_point) {
       return 0;
@@ -78,15 +76,27 @@ export default function LifeMain() {
     }
   }
 
+  // function distance_to_properties(dist) {
+  //   if (dist == 0) {
+  //     return [300, 0];
+  //   } else if (dist == 1) {
+  //     return [200, 1.1];
+  //   } else if (dist == 2) {
+  //     return [160, 1.15];
+  //   } else {
+  //     return [140, 1.2];
+  //   }
+  // }
+
   function distance_to_properties(dist) {
     if (dist == 0) {
-      return [300, 0];
+      return [1, 0];
     } else if (dist == 1) {
-      return [200, 1.1];
+      return [0.65, 1.1];
     } else if (dist == 2) {
-      return [160, 1.15];
+      return [0.55, 1.15];
     } else {
-      return [140, 1.2];
+      return [0.45, 1.2];
     }
   }
 
@@ -101,18 +111,19 @@ export default function LifeMain() {
     const distance = Math.floor(
       Math.sqrt(Math.pow(row - mid_point, 2) + Math.pow(col - mid_point, 2))
     );
-    const max_size = 300;
+
+    //const max_size = 300;
     //const scaling_factor = getScalingFactor(num_of_images_in_row, distance);
     //const size = max_size - distance * 100;
-    const [size, rate] = distance_to_properties(distance);
-
+    const [size_rate, dist_rate] = distance_to_properties(distance);
+    const size = max_size * size_rate;
     const x_plus =
       get_sign(col, mid_point) *
-      (size * Math.abs(mid_point - col) * rate + gap);
+      (size * Math.abs(mid_point - col) * dist_rate + gap);
 
     const y_plus =
       get_sign(row, mid_point) *
-      (size * Math.abs(mid_point - row) * rate + gap);
+      (size * Math.abs(mid_point - row) * dist_rate + gap);
 
     console.log("num_of_images_in_row", num_of_images_in_row, mid_point);
 
@@ -152,57 +163,16 @@ export default function LifeMain() {
   return (
     <section className="bg-[#F5F5F5] w-screen h-screen dark:bg-gray-800 p-4">
       <Nav />
-
-      {/* <TransformComponent
-        wrapperClass="h-full w-full !overflow-visible"
-        contentClass="w-[200%] h-[200%]" // Increased size of the container
+      {/* <TransformWrapper
+        centerOnInit
+        minScale={0.25}
+        initialScale={1}
+        limitToBounds={false}
+        centerZoomedOut={false}
+        pinch={{ step: 12 }}
+        wheel={{ step: 0.8 }}
       > */}
-      {/* <div className="w-full h-full relative">
-        {images.map((image) => (
-          <div
-            className="p-2 bg-white shadow-lg"
-            key={image.src}
-            style={{
-              position: "absolute",
-              left: `${center.x}px`,
-              top: `${center.y}px`,
-              transform: `translate(-50%, -50%) rotate(${getRandomRotation()}deg)`,
-            }}
-          >
-            <Image src={image.src} alt={image.alt} width={300} height={300} />
-          </div>
-        ))}
-      </div> */}
-
-      <div className="w-full h-full relative">
-        {/* {images.map((image, index) => {
-          const size = 300 - index_scale(index) * 100;
-          const scale = 300 * (1 - index_scale(index) * 0.08);
-          const x = center.x - odd_even(index) * size;
-          //const y = odd_even(index) * (center.y - index_scale(index) * img_size);
-          const y = center.y - odd_even(index) * size;
-          // scale(${scale})
-          return (
-            <div
-              key={image.src}
-              style={{
-                position: "absolute",
-                left: `${x}px`,
-                top: `${y}px`,
-                transform: `translate(-50%, -50%) rotate(${getRandomRotation()}deg)`, // adjust size and rotation based on index
-              }}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={size}
-                height={size}
-                // layout={"responsive"}
-              />
-            </div>
-          );
-        })} */}
-
+      <div className={" relative"}>
         {images.map((image, index) => {
           const [position, size] = getImagePosition(index);
           //const size = 300 - index_scale(index) * 100;
@@ -212,8 +182,6 @@ export default function LifeMain() {
               style={{
                 position: "absolute",
                 transform: `translate(-50%, -50%) rotate(${getRandomRotation()}deg)`,
-                //transform: `translate(-50%, -50%)`,
-
                 ...position,
               }}
               className="p-2 bg-white shadow-xl rounded-sm cursor-pointer"
@@ -224,35 +192,14 @@ export default function LifeMain() {
                 width={size}
                 height={size}
                 className="rounded-sm"
+                layout="intrinsic"
+                objectFit="cover"
               />
             </div>
           );
         })}
       </div>
-
-      {/* </TransformComponent> */}
+      {/* </TransformWrapper> */}
     </section>
   );
 }
-
-const ImageWrapper = ({ imageSrc, imageAlt, left, top, transform }) => {
-  return (
-    <TransformComponent
-      wrapperClass="h-full w-full !overflow-visible"
-      contentClass="w-[200%] h-[200%]" // Increased size of the container
-    >
-      <div
-        className="p-2 bg-white shadow-lg"
-        key={imageSrc}
-        style={{
-          position: "absolute",
-          left: `${left}`,
-          top: `${top}`,
-          transform: `${transform}`,
-        }}
-      >
-        <Image src={imageSrc} alt={imageAlt} width={300} height={300} />
-      </div>
-    </TransformComponent>
-  );
-};
