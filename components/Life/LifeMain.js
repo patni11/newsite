@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
-import Nav from "./Nav";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-//import styles from "./Life.module.css";
 
 const getRandomRotation = () => {
   const r = Math.floor(Math.random() * 4);
@@ -16,7 +13,7 @@ function index_images(idx) {
     return 5;
   } else if (idx >= 26 && idx <= 49) {
     return 7;
-  } else if (idx >= 24 && idx <= 32) {
+  } else if (idx >= 50 && idx <= 81) {
     return 9;
   } else {
     return 11;
@@ -27,14 +24,24 @@ export default function LifeMain() {
   const [images, setImages] = useState([]);
   const [center, setCenter] = useState({ x: 0, y: 0 });
   const [screenWidth, setScreenWidth] = useState(0);
+  const [imageCount, setImageCount] = useState(0);
 
   //get images
   useEffect(() => {
     fetch("/article_images/images.json")
       .then((response) => response.json())
-      .then((data) => setImages(data))
+      .then((data) => {
+        // Randomize the images
+        const shuffledImages = data.sort(() => Math.random() - 0.5);
+        setImages(shuffledImages);
+        setImageCount(shuffledImages.length);
+      })
       .catch((error) => console.error("Error loading images:", error));
   }, []);
+
+  const handleSliderChange = (e) => {
+    setImageCount(parseInt(e.target.value, 10)); // Update number of images
+  };
 
   //update center
   useEffect(() => {
@@ -62,7 +69,7 @@ export default function LifeMain() {
     if (screenWidth === 0 || images.length === 0) return 0;
 
     // Clamp size between minSize and maxSize
-    const size = (0.8 * screenWidth) / Math.pow(images.length, 0.65);
+    const size = (0.8 * screenWidth) / Math.pow(images.length, 0.5);
     return size;
   }, [screenWidth, images.length]);
 
@@ -92,11 +99,13 @@ export default function LifeMain() {
     if (dist == 0) {
       return [1, 0];
     } else if (dist == 1) {
-      return [0.65, 1.1];
+      return [0.75, 1.1];
     } else if (dist == 2) {
-      return [0.55, 1.15];
+      return [0.65, 1.15];
+    } else if (dist == 3) {
+      return [0.55, 1.3];
     } else {
-      return [0.45, 1.2];
+      return [0.45, 1.4];
     }
   }
 
@@ -161,8 +170,8 @@ export default function LifeMain() {
   };
 
   return (
-    <section className="bg-[#F5F5F5] w-screen h-screen dark:bg-gray-800 p-4">
-      <Nav />
+    <section className="bg-transparent w-screen h-screen dark:bg-transparent p-4">
+      {/* <Nav /> */}
       {/* <TransformWrapper
         centerOnInit
         minScale={0.25}
@@ -172,8 +181,14 @@ export default function LifeMain() {
         pinch={{ step: 12 }}
         wheel={{ step: 0.8 }}
       > */}
+      {/* <Slider
+        defaultValue={[33]}
+        max={100}
+        step={1}
+        className="absolute z-10"
+      /> */}
       <div className={" relative"}>
-        {images.map((image, index) => {
+        {images.slice(0, imageCount).map((image, index) => {
           const [position, size] = getImagePosition(index);
           //const size = 300 - index_scale(index) * 100;
           return (
@@ -184,7 +199,7 @@ export default function LifeMain() {
                 transform: `translate(-50%, -50%) rotate(${getRandomRotation()}deg)`,
                 ...position,
               }}
-              className="p-2 bg-white shadow-xl rounded-sm cursor-pointer"
+              className="p-1 bg-white shadow-xl rounded-sm cursor-pointer"
             >
               <Image
                 src={image.src}
@@ -194,11 +209,21 @@ export default function LifeMain() {
                 className="rounded-sm"
                 layout="intrinsic"
                 objectFit="cover"
+                //placeholder="blur"
+                quality={50}
               />
             </div>
           );
         })}
       </div>
+      <input
+        id="image-slider"
+        type="range"
+        min="1"
+        max={images.length}
+        value={imageCount}
+        onChange={handleSliderChange}
+      />
       {/* </TransformWrapper> */}
     </section>
   );

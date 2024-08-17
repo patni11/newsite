@@ -246,7 +246,7 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-      <div className="xs:space-x-4 space-x-8 block md:hidden mt-4 mx-auto flex items-center justify-center">
+      <div className="xs:space-x-4 space-x-6 block md:hidden mt-4 mx-auto flex items-center justify-center">
         <Link href="/about">
           <a className="text-base font-normal text-gray-600 dark:text-gray-300">
             About
