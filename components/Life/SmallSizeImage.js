@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import Navbar from "@components/Navbar";
 import Image from "next/image";
 
@@ -7,41 +7,12 @@ const getRandomRotation = () => {
   return r * (r % 2 == 0 ? 1 : -1);
 };
 
-export default function SmallSizeImage() {
-  const [images, setImages] = useState([]);
-  const [screenWidth, setScreenWidth] = useState(0);
-  //update center
-  useEffect(() => {
-    const updateWidth = () => {
-      setScreenWidth(window.innerWidth);
-    };
-    updateWidth();
-    // Update center when window is resized
-    window.addEventListener("resize", updateWidth);
-
-    // Cleanup listener on component unmount
-    return () => {
-      window.removeEventListener("resize", updateWidth);
-    };
-  }, []);
-
+export default function SmallSizeImage({ images, screenWidth }) {
   const size = useMemo(() => {
     if (screenWidth === 0) return 0;
 
     return screenWidth / 2;
   }, [screenWidth]);
-
-  //get images
-  useEffect(() => {
-    fetch("/article_images/images.json")
-      .then((response) => response.json())
-      .then((data) => {
-        // Randomize the images
-        const shuffledImages = data.sort(() => Math.random() - 0.5);
-        setImages(shuffledImages);
-      })
-      .catch((error) => console.error("Error loading images:", error));
-  }, []);
 
   return (
     <main className="dark:bg-gray-800 w-full overflow-hidden">

@@ -32,3 +32,25 @@ a {
 #Productivity {
   background-color: "#a8026f";
 }
+
+.custom-slider {
+  @apply appearance-none w-[25%] h-2 border border-white rounded-full transition-opacity duration-200;
+
+  /* Base track color, white on the left, gray on the right */
+  background: linear-gradient(to right, white 0%, black 100%);
+
+  /* Use the --percent value to control the background size dynamically */
+  background-size: var(--percent) 100%;
+
+  /* No background repeat */
+  background-repeat: no-repeat;
+
+  /* Thumb styles */
+  &::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 bg-white border border-white rounded-full cursor-pointer;
+  }
+
+  &::-moz-range-thumb {
+    @apply w-5 h-5 bg-white border border-white rounded-full cursor-pointer;
+  }
+}

@@ -1428,6 +1428,7 @@ __metadata:
     postcss: ^8.3.6
     react: 18.2.0
     react-dom: 18.2.0
+    react-pageflip: ^2.0.3
     react-zoom-pan-pinch: ^3.6.1
     tailwind-merge: ^2.5.2
     tailwindcss: ^3.2.0
@@ -1514,6 +1515,13 @@ __metadata:
   version: 1.0.0
   resolution: "package-json-from-dist@npm:1.0.0"
   checksum: ac706ec856a5a03f5261e4e48fa974f24feb044d51f84f8332e2af0af04fbdbdd5bbbfb9cbbe354190409bc8307c83a9e38c6672c3c8855f709afb0006a009ea
+  languageName: node
+  linkType: hard
+
+"page-flip@npm:latest":
+  version: 2.0.7
+  resolution: "page-flip@npm:2.0.7"
+  checksum: 4d9b14dacd85d143f01635f4cfd3b4425141a5a8e86e0e35d751416bb602fe6447d995d3e65a64ec992f29315abb44253ebdb724c85586c402079ca6c5e234a5
   languageName: node
   linkType: hard
 
@@ -1694,6 +1702,15 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
   checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
+  languageName: node
+  linkType: hard
+
+"react-pageflip@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "react-pageflip@npm:2.0.3"
+  dependencies:
+    page-flip: latest
+  checksum: 654736477317e5b12324c1f81827f747c42d2142b0a756b1bc066807a55bddfa92c37e5c2b4901f9656eb3cb404ded343248f15ae7fe0427f888201bd1fe5d36
   languageName: node
   linkType: hard
 

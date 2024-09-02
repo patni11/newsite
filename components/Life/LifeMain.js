@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import Image from "next/image";
+//import HTMLFlipBook from "react-pageflip";
+import ImageCard from "./ImageCard";
 
 const getRandomRotation = () => {
   const r = Math.floor(Math.random() * 4);
@@ -20,50 +22,14 @@ function index_images(idx) {
   }
 }
 
-export default function LifeMain() {
-  const [images, setImages] = useState([]);
-  const [center, setCenter] = useState({ x: 0, y: 0 });
-  const [screenWidth, setScreenWidth] = useState(0);
-  const [imageCount, setImageCount] = useState(0);
-
-  //get images
-  useEffect(() => {
-    fetch("/article_images/images.json")
-      .then((response) => response.json())
-      .then((data) => {
-        // Randomize the images
-        const shuffledImages = data.sort(() => Math.random() - 0.5);
-        setImages(shuffledImages);
-        setImageCount(shuffledImages.length);
-      })
-      .catch((error) => console.error("Error loading images:", error));
-  }, []);
-
-  const handleSliderChange = (e) => {
-    setImageCount(parseInt(e.target.value, 10)); // Update number of images
-  };
-
-  //update center
-  useEffect(() => {
-    const updateCenter = () => {
-      const x = window.innerWidth / 2;
-      const y = window.innerHeight / 2;
-      setCenter({ x, y });
-      setScreenWidth(window.innerWidth);
-    };
-
-    // Initial call to set center
-    updateCenter();
-
-    // Update center when window is resized
-    window.addEventListener("resize", updateCenter);
-
-    // Cleanup listener on component unmount
-    return () => {
-      window.removeEventListener("resize", updateCenter);
-    };
-  }, []);
-
+export default function LifeMain({
+  images,
+  center,
+  screenWidth,
+  imageCount,
+  zoomToElement,
+  resetTransform,
+}) {
   // Calculate image size based on screen width and number of images
   const max_size = useMemo(() => {
     if (screenWidth === 0 || images.length === 0) return 0;
@@ -134,29 +100,6 @@ export default function LifeMain() {
       get_sign(row, mid_point) *
       (size * Math.abs(mid_point - row) * dist_rate + gap);
 
-    console.log("num_of_images_in_row", num_of_images_in_row, mid_point);
-
-    console.log(
-      "Index: ",
-      index,
-      "\n",
-      "distance:",
-      distance,
-      "\n",
-      "size:",
-      size,
-      "\n",
-      "row: ",
-      row,
-      "col: ",
-      col,
-      "\n",
-      "x plus",
-      x_plus,
-      "y plus",
-      y_plus
-    );
-
     const x = center.x + x_plus; // calculate the x position based on the column and row
     const y = center.y + y_plus; // calculate the y position based on the row
     return [
@@ -171,28 +114,14 @@ export default function LifeMain() {
 
   return (
     <section className="bg-transparent w-screen h-screen dark:bg-transparent p-4">
-      {/* <Nav /> */}
-      {/* <TransformWrapper
-        centerOnInit
-        minScale={0.25}
-        initialScale={1}
-        limitToBounds={false}
-        centerZoomedOut={false}
-        pinch={{ step: 12 }}
-        wheel={{ step: 0.8 }}
-      > */}
-      {/* <Slider
-        defaultValue={[33]}
-        max={100}
-        step={1}
-        className="absolute z-10"
-      /> */}
       <div className={" relative"}>
         {images.slice(0, imageCount).map((image, index) => {
           const [position, size] = getImagePosition(index);
           //const size = 300 - index_scale(index) * 100;
           return (
             <div
+              id={`element${index}`}
+              //onClick={zoomToElement(`element${index}`)}
               key={image.src}
               style={{
                 position: "absolute",
@@ -216,14 +145,6 @@ export default function LifeMain() {
           );
         })}
       </div>
-      <input
-        id="image-slider"
-        type="range"
-        min="1"
-        max={images.length}
-        value={imageCount}
-        onChange={handleSliderChange}
-      />
       {/* </TransformWrapper> */}
     </section>
   );

@@ -10,4 +10,41 @@
 
 .artboard {
   @apply flex gap-8;
-}/*# sourceMappingURL=Life.module.css.map */
+} /*# sourceMappingURL=Life.module.css.map */
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: gray; /* Gray slider track */
+  border-radius: 10px;
+  border: 1px solid white; /* White border */
+  outline: none;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white; /* White bulb */
+  cursor: pointer;
+  border: 1px solid white; /* White border around the bulb */
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white; /* White bulb */
+  cursor: pointer;
+  border: 1px solid white; /* White border around the bulb */
+}
