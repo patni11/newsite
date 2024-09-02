@@ -68,9 +68,9 @@ export default function life() {
         <TransformWrapper
           centerOnInit
           minScale={0.25}
-          initialScale={0.5}
-          limitToBounds={false}
-          centerZoomedOut={false}
+          initialScale={0.8}
+          limitToBounds={true}
+          centerZoomedOut={true}
           pinch={{ step: 12 }}
           wheel={{ step: 0.8 }}
           disabled={isInteracting}
@@ -91,28 +91,27 @@ export default function life() {
         <div className="absolute top-0 w-full">
           <Nav />
         </div>
-        <div
-          className="absolute bottom-10 left-[50%] flex space-x-2 items-center w-[40%]"
-          // style={{ transform: "translate(-50%,0%)" }}
-        >
-          <button
-            className="p-2 rounded-lg bg-gray-800 dark:bg-white"
-            onClick={toggleInteraction}
-          >
-            {isInteracting ? (
-              <HandIcon className="h-5 w-5 edit-toggle" color="#ef4444" />
-            ) : (
-              <FileEdit className="h-5 w-5 edit-toggle" color="#0ea5e9" />
-            )}
-          </button>
+        {/* 
+        <input
+          type="range"
+          min="1"
+          max={images.length}
+          value={imageCount}
+          onChange={handleSliderChange}
+          className="custom-slider absolute bottom-10 left-[50%]"
+          style={{ transform: "translate:(-50%,0%)" }}
+        /> */}
 
+        <div
+          className="absolute bottom-10 left-[50%]"
+          style={{ transform: "translateX(-50%)" }}
+        >
           <input
             type="range"
             min="1"
             max={images.length}
             value={imageCount}
             onChange={handleSliderChange}
-            className="w-full custom-slider z=100"
           />
         </div>
       </div>

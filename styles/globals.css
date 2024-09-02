@@ -33,24 +33,55 @@ a {
   background-color: "#a8026f";
 }
 
-.custom-slider {
-  @apply appearance-none w-[25%] h-2 border border-white rounded-full transition-opacity duration-200;
+input[type="range"] {
+  /* removing default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  /* creating a custom design */
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  /*  slider progress trick  */
+  overflow: hidden;
+  border-radius: 16px;
+}
 
-  /* Base track color, white on the left, gray on the right */
-  background: linear-gradient(to right, white 0%, black 100%);
+/* Track: webkit browsers */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 15px;
+  background: #ccc;
+  border-radius: 16px;
+}
 
-  /* Use the --percent value to control the background size dynamically */
-  background-size: var(--percent) 100%;
+/* Track: Mozilla Firefox */
+input[type="range"]::-moz-range-track {
+  height: 15px;
+  background: #ccc;
+  border-radius: 16px;
+}
 
-  /* No background repeat */
-  background-repeat: no-repeat;
+/* Thumb: webkit */
+input[type="range"]::-webkit-slider-thumb {
+  /* removing default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  /* creating a custom design */
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #000000;
+  /*  slider progress trick  */
+  box-shadow: -407px 0 0 400px #000000;
+}
 
-  /* Thumb styles */
-  &::-webkit-slider-thumb {
-    @apply appearance-none w-5 h-5 bg-white border border-white rounded-full cursor-pointer;
-  }
-
-  &::-moz-range-thumb {
-    @apply w-5 h-5 bg-white border border-white rounded-full cursor-pointer;
-  }
+/* Thumb: Firefox */
+input[type="range"]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #000000;
+  /*  slider progress trick  */
+  box-shadow: -407px 0 0 400px #000000;
 }
