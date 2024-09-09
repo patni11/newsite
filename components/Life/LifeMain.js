@@ -81,7 +81,7 @@ export default function ScalableGridDiamondLayout({
                 className="rounded-sm"
                 layout="intrinsic"
                 objectFit="cover"
-                quality={50}
+                quality={100}
               />
             </div>
           );
