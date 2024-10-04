@@ -119,6 +119,9 @@ const Timeline = ({ userData }) => {
             )}
           </div>
         ))}
+              <p className="text-gray-500 text-sm dark:text-gray-300 italics mt-12 w-full text-center">
+        will update the rest soon, I am too lazy
+      </p>
       </div>
     </div>
   );
