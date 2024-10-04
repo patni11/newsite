@@ -323,6 +323,43 @@ Experience the future of Mac with Face ID. try the app today and unlock your Mac
       desc: "39 points in International Baccalaureate",
     },
   ],
+  timeline:[
+    {
+      date:"Sep 11, 2002",
+      description:"Spawned in existence",
+      link:"",
+    },
+    {
+      date:"2005",
+      description:"Drawing everywhere, the goal is to be an artist",
+      link:"",
+    },
+    {
+      date:"2012",
+      description:"Blurry Memories idk what happened 2005-2012",
+      link:"",
+    },
+    {
+      date:"2013",
+      description:"Decent at school, mediocre",
+      link:"",
+    },
+    {
+      date:"2014",
+      description:"Joined Boarding School",
+      link:"",
+    },
+    {
+      date:"March, 2015",
+      description:"Got interested in IoS App Dev",
+      link:"",
+    },
+    {
+      date:"October 2015",
+      description:"Bought Mac, after trying every possible way to run xcode on windows",
+      link:"",
+    },
+  ],
   softwareDevResume: "/resumes/SoftwareEngineer/Shubh_Patni_resume.pdf",
   fullstackDevResume: "/resumes/FullStack/Shubh_Patni_resume.pdf",
   web3DevResume: "/resumes/Web3/Shubh_Patni_resume.pdf",

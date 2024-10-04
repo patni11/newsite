@@ -1,5 +1,6 @@
 import React from "react";
 import userData from "@constants/data";
+import { useState } from 'react';
 
 export default function AboutMe() {
   return (
@@ -19,7 +20,7 @@ export default function AboutMe() {
           </p>
         </div>
       </div>
-      <div className="bg-[#F1F1F1] dark:bg-gray-900 px-4">
+      <div className="bg-[#F1F1F1] dark:bg-gray-900 px-4 pb-20">
         <div className="pt-20 grid grid-cols-1 md:grid-cols-3 max-w-6xl mx-auto gap-y-20 gap-x-20">
           {/* Social Buttons */}
           <div className="inline-flex flex-col">
@@ -72,6 +73,68 @@ export default function AboutMe() {
           </div>
         </div>
       </div>
+
+      <Timeline userData={userData}/>
     </section>
   );
 }
+
+const Timeline = ({ userData }) => {
+  const [sortOrder, setSortOrder] = useState('newest'); // 'newest' or 'oldest'
+
+  // Function to sort the timeline based on the date
+  const sortedTimeline = [...userData.timeline].sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+
+    return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
+  });
+
+  return (
+    <div className="max-w-6xl mx-auto h-48 bg-white dark:bg-gray-800 h-full mb-24 mt-24">
+      <div className="grid grid-cols-1 dark:bg-gray-800 max-w-xl mx-auto">
+        <div className="flex justify-between w-full items-center mb-8 p-4">
+        <h1 className="text-2xl md:text-2xl sm:text-2xl font-bold text-center md:text-left">
+          Timeline
+        </h1>
+
+        <button className="relative border p-2 px-4 rounded-md bg-white dark:bg-gray-800 z-10 shadow-md" onClick={() => setSortOrder(sortOrder === 'newest' ? 'oldest' : 'newest')}>
+          Sort by {sortOrder === 'newest' ? 'Oldest' : 'Newest'}
+        </button>
+
+        </div>
+
+        {sortedTimeline.map((tl, idx) => (
+          <div key={idx} className="relative">
+            <TimelineCard
+              desc={tl.description}
+              date={tl.date}
+              link={tl.link}
+            />
+            {idx === sortedTimeline.length - 1 ? null : (
+              <div className="relative divider-container flex flex-col items-center -mt-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full absolute z-10 top-1"></div>
+                <div className="w-1 h-12 bg-gray-200 dark:bg-gray-500 rounded-full -mt-2"></div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const TimelineCard = ({ desc, date, link }) => {
+  return (
+    <div className="relative border p-2 px-4 rounded-md bg-white dark:bg-gray-800 z-10 mx-4 shadow-md">
+      <div className="flex justify-between w-full items-center">
+      <p className="text-gray-500 text-sm dark:text-gray-300">
+        {desc}
+      </p>
+      <p className="text-xs text-gray-400 text-nowrap">
+        {date}
+      </p>
+      </div>
+    </div>
+  );
+};
